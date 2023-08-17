@@ -1,0 +1,30 @@
+<!-- 共通レイアウトページ -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <!--切り取りしました。-->
+      <!-- current_userのuser info -->
+      <%= render 'books/userinfo', user: current_user %>
+      <!-- 投稿 -->
+      <%= render 'books/new', book: @book %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
+        <table>
+          <tr>
+            <th><p>image</p></th>
+            <th><p>name</p></th>
+            <th><p> </p></th>
+          </tr>
+          <% @users.each do |user| %>
+          <tr>
+            <td><span><%= image_tag user.get_profile_image(70,70) %></span></td>
+            <td><span><%= user.name %></span></td>
+            <td><%= link_to 'Show', user_path(user.id) %></td>
+          </tr>
+          <% end %>
+        </table>
+    </div>
+  </div>
+</div>

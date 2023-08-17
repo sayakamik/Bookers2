@@ -2,27 +2,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <h2>User info</h2>
-        <!-- get_profile_image => user.profileに登録の画像を取出 -->
-        <%= image_tag current_user.get_profile_image(100,100) %>
-        <table class="table" >
-          <tr><th>name</th><td><b><%= current_user.name %></b></td></tr>
-          <tr><th>introduction</th><td><b><%= current_user.introduction %></b></td></tr>
-        </table>
-        <div class="row-m-3">
-          <%= link_to edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-block' do %>
-            <i class="fas fa-user-cog"></i>
-          <% end %>
-        </div>
+       <!--切り取りしました。-->
+      <!-- current_userのuser info -->
+      <%= render 'books/userinfo', user: current_user %>
+      <!-- 投稿 -->
+      <%= render 'books/new', book: @book %>
 
-      <h2 class ="new-book mt-3">New book</h2>
-      <%= form_with model: @book, url:'/books', method: :post do |f| %>
-            <p>Title</p>
-            <%= f.text_field :title %>
-            <p>Opinion</p>
-            <%= f.text_area :body %><br>
-          <button class="btn btn-success" type="submit">Create Book</button>
-      <% end %>
     </div>
 
     <div class="col-md-8 offset-md-1">
@@ -42,4 +27,5 @@
           <% end %>
         </table>
     </div>
+  </div>
 </div>

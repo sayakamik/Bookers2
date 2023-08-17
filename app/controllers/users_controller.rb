@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  def new
+    @user = User.new
+  end
+
   def show
     @user = User.find(params[:id])
-    @users = User.all
-    @books = Book.all
+    @books = @user.books.order(created_at: :desc)
     @book = Book.new
-
   end
 
   def edit
@@ -12,14 +14,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:id])
     @users = User.all
     @book = Book.new
-    @books = Book.all
+    #@user = User.find(params[:id])
   end
 
-  def book_params
-    params.require(:book).permit(:image, :title, :body)
+  def user_params
+    params.require(:user).permit(:image, :name, :introduction)
   end
 
 end

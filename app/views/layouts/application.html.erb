@@ -18,7 +18,7 @@
           <%= link_to "Home", root_path %>
         </li>
         <li>
-          <%= link_to "About", home_about_path %>
+          <%= link_to "Users", users_path %>
         </li>
         <li>
           <%= link_to "Books", books_path %>
@@ -35,7 +35,7 @@
         </li>
         <li>
           <%= link_to "About", home_about_path %>
-        </li>
+        </lsi>
         <li>
           <%= link_to "Sign up", new_user_registration_path %>
         </li>
@@ -44,7 +44,11 @@
         </li>
       <% end %>
   </header>
-
+  <main>
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+  </main>
     <%= yield %>
   <footer>
     <p>CopyRight Infratop.inc</p>
