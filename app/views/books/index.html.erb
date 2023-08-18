@@ -1,6 +1,14 @@
 <!-- 共通レイアウトページ -->
 <div class="container">
   <div class="row">
+  <% if @book.errors.any? %>
+      <%= @book.errors.count %> error prohibited this obj from being saved:<br>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
     <div class="col-md-3">
        <!--切り取りしました。-->
       <!-- current_userのuser info -->
