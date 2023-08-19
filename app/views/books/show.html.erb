@@ -1,3 +1,4 @@
+<p id="notice"></p>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
@@ -9,17 +10,18 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
+
       <h2>Book detail</h2>
-        <table>
+        <table class="table">
           <tr>
-            <td><span><%= link_to user_path(@book1.user.id) do %><%= image_tag @book1.user.get_profile_image(70,70) %><% end %></span><br>
+            <td><span><%= link_to user_path(@book1.user.id) do %><%= image_tag @book1.user.get_profile_image(100,100) %><% end %></span><br>
             <spam><%= link_to user_path(@book1.user.id) do %><%= @book1.user.name %><% end %></span></td>
             <td><span><%= link_to book_path(@book1.id) do %><%= @book1.title %><% end %></span></td>
             <td><span><%= @book1.body %></span></td>
 
             <% if @user == current_user %>
-              <td><%= link_to 'Edit', edit_book_path(@book1.id) %></td>
-              <td><%= link_to 'Destroy', book_path(@book1.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+              <td><%= link_to 'Edit', edit_book_path(@book1.id), class: 'btn btn-success btn-sm' %></td>
+              <td><%= link_to 'Destroy', book_path(@book1.id), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: '本当に消しますか？' } %></td>
             <% end %><br>
           </tr>
         </table>
